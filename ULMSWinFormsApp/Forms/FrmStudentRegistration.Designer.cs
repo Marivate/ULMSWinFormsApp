@@ -134,6 +134,7 @@
             btnSaveStudent.TabIndex = 10;
             btnSaveStudent.Text = "Save Student";
             btnSaveStudent.UseVisualStyleBackColor = true;
+            btnSaveStudent.Click += btnSaveStudent_Click;
             // 
             // btnClearStudent
             // 
@@ -153,6 +154,7 @@
             btnBackToDashboard.TabIndex = 12;
             btnBackToDashboard.Text = "Back";
             btnBackToDashboard.UseVisualStyleBackColor = true;
+            btnBackToDashboard.Click += btnBackToDashboard_Click;
             // 
             // txtStudentOutput
             // 

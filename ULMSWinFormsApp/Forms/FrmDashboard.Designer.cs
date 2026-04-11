@@ -54,6 +54,7 @@
             btnStudentRegistration.TabIndex = 1;
             btnStudentRegistration.Text = "Student Registration";
             btnStudentRegistration.UseVisualStyleBackColor = true;
+            btnStudentRegistration.Click += btnStudentRegistration_Click;
             // 
             // btnCourseEnrollment
             // 
@@ -63,6 +64,7 @@
             btnCourseEnrollment.TabIndex = 2;
             btnCourseEnrollment.Text = "Course Enrolment";
             btnCourseEnrollment.UseVisualStyleBackColor = true;
+            btnCourseEnrollment.Click += btnCourseEnrollment_Click;
             // 
             // btnMarksCapture
             // 

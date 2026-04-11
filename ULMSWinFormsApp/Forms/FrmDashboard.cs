@@ -24,8 +24,16 @@ namespace ULMSWinFormsApp.Forms
 
         private void btnStudentRegistration_Click(object sender, EventArgs e)
         {
+            MessageBox.Show("Opening registration form...");
+
             FrmStudentRegistration registrationForm = new FrmStudentRegistration();
             registrationForm.ShowDialog();
+        }
+
+        private void btnCourseEnrollment_Click(object sender, EventArgs e)
+        {
+            FrmCourseEnrollment enrollmentForm = new FrmCourseEnrollment();
+            enrollmentForm.ShowDialog();
         }
     }
 }
