@@ -41,5 +41,11 @@ namespace ULMSWinFormsApp.Forms
             FrmMarksCapture marksForm = new FrmMarksCapture();
             marksForm.ShowDialog();
         }
+
+        private void btnReports_Click(object sender, EventArgs e)
+        {
+            FrmReports reportsForm = new FrmReports();
+            reportsForm.ShowDialog();
+        }
     }
 }
