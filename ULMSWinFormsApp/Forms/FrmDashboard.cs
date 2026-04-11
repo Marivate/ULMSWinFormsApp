@@ -35,5 +35,11 @@ namespace ULMSWinFormsApp.Forms
             FrmCourseEnrollment enrollmentForm = new FrmCourseEnrollment();
             enrollmentForm.ShowDialog();
         }
+
+        private void btnMarksCapture_Click(object sender, EventArgs e)
+        {
+            FrmMarksCapture marksForm = new FrmMarksCapture();
+            marksForm.ShowDialog();
+        }
     }
 }

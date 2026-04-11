@@ -74,6 +74,7 @@
             btnMarksCapture.TabIndex = 3;
             btnMarksCapture.Text = "Marks Capture";
             btnMarksCapture.UseVisualStyleBackColor = true;
+            btnMarksCapture.Click += btnMarksCapture_Click;
             // 
             // btnReports
             // 
