@@ -162,6 +162,7 @@
             txtMarksOutput.ReadOnly = true;
             txtMarksOutput.Size = new Size(339, 212);
             txtMarksOutput.TabIndex = 13;
+            txtMarksOutput.TextChanged += txtMarksOutput_TextChanged;
             // 
             // FrmMarksCapture
             // 
@@ -185,6 +186,7 @@
             Name = "FrmMarksCapture";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Umoja Learning Management System - Marks Capture";
+            Load += FrmMarksCapture_Load;
             ResumeLayout(false);
             PerformLayout();
         }

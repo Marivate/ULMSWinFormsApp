@@ -19,18 +19,53 @@ namespace ULMSWinFormsApp.Forms
 
         private void btnSaveStudent_Click(object sender, EventArgs e)
         {
-            // Intentional weak validation for testing purposes
+            
+            // VALIDATION
+            
+            if (string.IsNullOrWhiteSpace(txtStudentId.Text) ||
+                string.IsNullOrWhiteSpace(txtFullName.Text) ||
+                string.IsNullOrWhiteSpace(txtEmail.Text) ||
+                string.IsNullOrWhiteSpace(txtAge.Text) ||
+                cmbProgramme.SelectedIndex == -1)
+            {
+                MessageBox.Show("Please fill in all fields.");
+                return;
+            }
+
+           
+            // SAFE AGE CONVERSION
+            
+            int age;
+            if (!int.TryParse(txtAge.Text, out age))
+            {
+                MessageBox.Show("Age must be a valid number.");
+                return;
+            }
+
+            // Age validation
+            if (age <= 0 || age > 120)
+            {
+                MessageBox.Show("Please enter a valid age.");
+                return;
+            }
+
+            
+            // CREATE STUDENT OBJECT
+            
             Student student = new Student
             {
                 StudentId = txtStudentId.Text,
                 FullName = txtFullName.Text,
                 Email = txtEmail.Text,
-                Age = int.Parse(txtAge.Text),
+                Age = age,
                 Programme = cmbProgramme.Text
             };
 
+            // OUTPUT
+         
             txtStudentOutput.Text =
                 "Student saved successfully!" + Environment.NewLine +
+                "------------------------" + Environment.NewLine +
                 "Student ID: " + student.StudentId + Environment.NewLine +
                 "Full Name: " + student.FullName + Environment.NewLine +
                 "Email: " + student.Email + Environment.NewLine +

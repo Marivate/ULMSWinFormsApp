@@ -18,29 +18,52 @@ namespace ULMSWinFormsApp.Forms
 
         private void btnCalculateResults_Click(object sender, EventArgs e)
         {
-            // Intentional weak validation and faulty average logic for testing purposes
+           
+            // VALIDATION
+            if (string.IsNullOrWhiteSpace(txtMarkStudentId.Text) ||
+                string.IsNullOrWhiteSpace(txtMarkStudentName.Text) ||
+                string.IsNullOrWhiteSpace(txtSubject1.Text) ||
+                string.IsNullOrWhiteSpace(txtSubject2.Text) ||
+                string.IsNullOrWhiteSpace(txtSubject3.Text))
+            {
+                MessageBox.Show("Please fill in all fields.");
+                return;
+            }
+
+            
+            // SAFE CONVERSION
+            double s1, s2, s3;
+
+            if (!double.TryParse(txtSubject1.Text, out s1) ||
+                !double.TryParse(txtSubject2.Text, out s2) ||
+                !double.TryParse(txtSubject3.Text, out s3))
+            {
+                MessageBox.Show("Please enter valid numeric marks.");
+                return;
+            }
+
+            
+            // CREATE RECORD
             MarkRecord record = new MarkRecord();
 
             record.StudentId = txtMarkStudentId.Text;
             record.StudentName = txtMarkStudentName.Text;
-            record.Subject1 = Convert.ToDouble(txtSubject1.Text);
-            record.Subject2 = Convert.ToDouble(txtSubject2.Text);
-            record.Subject3 = Convert.ToDouble(txtSubject3.Text);
+            record.Subject1 = s1;
+            record.Subject2 = s2;
+            record.Subject3 = s3;
 
-            // Intentional faulty calculation
-            record.Average = record.Subject1 + record.Subject2 + record.Subject3 / 3;
+            
+            // CORRECT AVERAGE CALCULATION
+            record.Average = (record.Subject1 + record.Subject2 + record.Subject3) / 3;
 
-            if (record.Average >= 50)
-            {
-                record.ResultStatus = "PASS";
-            }
-            else
-            {
-                record.ResultStatus = "FAIL";
-            }
+            // RESULT LOGIC
+            record.ResultStatus = record.Average >= 50 ? "PASS" : "FAIL";
 
+            
+            // OUTPUT
             txtMarksOutput.Text =
                 "Marks processed successfully!" + Environment.NewLine +
+                "------------------------" + Environment.NewLine +
                 "Student ID: " + record.StudentId + Environment.NewLine +
                 "Student Name: " + record.StudentName + Environment.NewLine +
                 "Subject 1: " + record.Subject1 + Environment.NewLine +
@@ -66,6 +89,14 @@ namespace ULMSWinFormsApp.Forms
             this.Close();
         }
 
+        private void txtMarksOutput_TextChanged(object sender, EventArgs e)
+        {
 
+        }
+
+        private void FrmMarksCapture_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

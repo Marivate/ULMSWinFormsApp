@@ -15,14 +15,29 @@ namespace ULMSWinFormsApp.Forms
             InitializeComponent();
         }
 
-        private void btnGenerateReport_Click(object sender, EventArgs e)
+        private async void btnGenerateReport_Click(object sender, EventArgs e)
         {
-            // Intentional weak validation and slow processing for testing purposes
+            
+            // VALIDATION
+            
+            if (cmbReportType.SelectedIndex == -1)
+            {
+                MessageBox.Show("Please select a report type.");
+                return;
+            }
+
+            if (string.IsNullOrWhiteSpace(txtReportStudentId.Text))
+            {
+                MessageBox.Show("Please enter a Student ID.");
+                return;
+            }
+
             string reportType = cmbReportType.Text;
             string studentId = txtReportStudentId.Text;
 
-            // Intentional poor performance simulation
-            Thread.Sleep(4000);
+            
+            // IMPROVED PERFORMANCE
+            await Task.Delay(1000);
 
             StringBuilder report = new StringBuilder();
 
@@ -43,17 +58,17 @@ namespace ULMSWinFormsApp.Forms
                 report.AppendLine("Subject 1: 78");
                 report.AppendLine("Subject 2: 65");
                 report.AppendLine("Subject 3: 80");
-                report.AppendLine("Average: 169");
+
+                // Correct average
+                double average = (78 + 65 + 80) / 3.0;
+
+                report.AppendLine("Average: " + average);
             }
             else if (reportType == "Enrollment Report")
             {
                 report.AppendLine("Course 1: Programming 1");
                 report.AppendLine("Course 2: Database Systems");
                 report.AppendLine("Semester: Semester 1");
-            }
-            else
-            {
-                report.AppendLine("No report type selected.");
             }
 
             txtReportOutput.Text = report.ToString();
@@ -72,8 +87,9 @@ namespace ULMSWinFormsApp.Forms
             this.Close();
         }
 
+        private void FrmReports_Load(object sender, EventArgs e)
+        {
 
-
-
+        }
     }
 }
